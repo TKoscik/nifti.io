@@ -1,0 +1,18 @@
+mni.to.world <- function(coords, tform.xyz=NULL, nii.file=NULL) {
+  
+  if (is.null(tform.xyz)) {
+    if (is.null(nii.file)) {
+      stop("Affine transform must be provided or read from nifti file")
+    } else {
+      tform <- nii.hdr(nii.file, c("srow_x", "srow_y", "srow_z"))
+    }
+  } else {
+    stopifnot(nrow(tform.xyz) == 3)
+    stopifnot(ncol(tform.xyz) == 4)
+    tform <- rbind(tform.xyz, c(0,0,0,1))
+  }
+  n.coords <- nrow(coords)
+  world.coords <- round(t(solve(tform) %*% rbind(coords[ ,1], coords[ ,2], coords[ ,3], rep(1,n.coords)))[ ,-4])+1
+  
+  return(world.coords)
+}
