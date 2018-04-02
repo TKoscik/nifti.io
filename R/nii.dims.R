@@ -1,10 +1,7 @@
 nii.dims <- function(nii.file) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
-  
+
   stopifnot(file.exists(nii.file))
-  
+
   fid <- file(nii.file, "rb")
   endian <- .Platform$endian
   hdr.size <- readBin(fid, integer(), size=4, endian=endian)

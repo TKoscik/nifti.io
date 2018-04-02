@@ -1,8 +1,4 @@
 init.nii <- function(file.name, dims, pixdim=NULL, orient=NULL) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
-
   fid <- file(file.name, "w+b")
 
   if (is.null(pixdim)) { pixdim <- c(-1,2,2,2,1,0,0,0) }

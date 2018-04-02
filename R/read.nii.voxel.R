@@ -1,16 +1,13 @@
 read.nii.voxel <- function(nii.file, coords) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
-  
+
   # Check inputs -----------------------------------------------------------------
   stopifnot(!missing(nii.file), file.exists(nii.file),
             !missing(coords), any(length(coords)==3, length(coords==4)))
-  
+
   # Get necessary NII file info --------------------------------------------------
   dims <- nii.dims(nii.file)
   hdr <- nii.hdr(nii.file, field = c("vox_offset", "datatype", "bitpix"))
-  
+
   # Check if coordinates are in range
   for (i in 1:length(coords)) {
     if (i < 4) {
@@ -19,11 +16,11 @@ read.nii.voxel <- function(nii.file, coords) {
       stopifnot(coords[i] <= dims[i])
     }
   }
-  
+
   # Initialize NII file for binary reading -------------------------------------
   fid <- file(nii.file, "rb")
   endian <- .Platform$endian
-  
+
   # Get data -------------------------------------------------------------------
   n <- length(dims)
   dimorder <- 1:4
@@ -44,11 +41,12 @@ read.nii.voxel <- function(nii.file, coords) {
     seek(fid, where=(hdr$vox_offset + (loc-1) * (hdr$bitpix/8)), origin="start")
     data[counter] <- switch(
       as.character(hdr$datatype),
-      `2` = readBin(fid, integer(), 1, hdr$bitpix/8, signed=FALSE, endian=endian), 
-      `4` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian), 
-      `8` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian), 
-      `16` = readBin(fid, double(), 1, hdr$bitpix/8, endian=endian), 
-      `64` = readBin(fid, double(), 1, hdr$bitpix/8, endian=endian), 
+      `2` = readBin(fid, integer(), 1, hdr$bitpix/8, signed=FALSE, endian=endian),
+      `4` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian),
+      `8` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian),
+      `16` = readBin(fid, double(), 1, hdr$bitpix/8, endian=endian),
+      `64` = readBin(fid, double(), 1, hdr$bitpix/8, endian=endian),
+      `512` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
       stop(paste("Data type", hdr$datatype, "unsupported in", fname)))
   }
   close(fid)
