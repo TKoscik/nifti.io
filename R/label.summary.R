@@ -21,7 +21,7 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv=NULL, return.df=FALSE
   colnames(df) <- c("id", col.labels)
 
   for (i in 1:n.sjx) {
-    labels <- read.nii.volume(label.sjx[i])
+    labels <- read.nii.volume(label.sjx[i], 1)
     pixdim <- prod(unlist(nii.hdr(label.sjx[i], "pixdim")[2:4]))
 
     out.vec <- numeric(0L)
@@ -29,7 +29,7 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv=NULL, return.df=FALSE
       for (j in 2:ncol(label.df)) {
         merge.labels <- na.omit(unique(label.df[ ,j]))
         for (k in 1:length(merge.labels)) {
-          out.vec <- c(out.vec, sum(labels %in% which(label.df[ ,j] == merg.labels[k])))
+          out.vec <- c(out.vec, sum(labels %in% which(label.df[ ,j] == merge.labels[k])))
         }
       }
     }
