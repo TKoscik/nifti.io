@@ -1,4 +1,4 @@
-label.summary <- function(label.sjx, id.ls=NULL, label.csv=NULL, return.df=FALSE, save.name=NULL) {
+label.summary <- function(label.sjx, id.ls=NULL, label.csv, return.df=FALSE, save.name=NULL) {
 
   n.sjx <- length(label.sjx)
   label.df <- read.csv(label.csv, header=TRUE, as.is=TRUE)
@@ -26,15 +26,13 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv=NULL, return.df=FALSE
     pixdim <- prod(unlist(nii.hdr(label.sjx[i], "pixdim")[2:4]))
 
     out.vec <- numeric(0L)
-    if (ncol(label.df)){
-      for (j in 2:ncol(label.df)) {
+    for (j in 2:ncol(label.df)) {
         merge.labels <- na.omit(unique(label.df[ ,j]))
         for (k in 1:length(merge.labels)) {
           out.vec <- c(out.vec, sum(labels %in% label.df[which(label.df[ ,j] == merge.labels[k]),1]))
         }
-      }
     }
-
+    
     out.vec <- out.vec / pixdim
 
     df[i,2:ncol(df)] <- out.vec
