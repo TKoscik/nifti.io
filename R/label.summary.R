@@ -51,6 +51,6 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv, return.df=FALSE, sav
   }
 
   if (return.df == TRUE) {
-    return(df[i, ])
+    return(df)
   }
 }
