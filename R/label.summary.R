@@ -38,7 +38,7 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv=NULL, return.df=FALSE
     out.vec <- out.vec / pixdim
 
     df[i,2:ncol(df)] <- out.vec
-    df[i, 
+    df[i,1] <- id.ls[i]
   }
 
   if (!is.null(save.name)) {
