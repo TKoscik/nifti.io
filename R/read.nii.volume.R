@@ -30,7 +30,7 @@ read.nii.volume <- function(nii.file, vol.num) {
     `16` = readBin(fid, double(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `64` = readBin(fid, double(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `512` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
-    stop(paste("Data type", data.type, "unsupported in", fname)))
+    stop(paste("Data type", as.character(hdr$datatype), "unsupported in", nii.file)))
   data <- array(data, dim=dims[1:3])
 
   close(fid)
