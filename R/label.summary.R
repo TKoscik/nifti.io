@@ -9,7 +9,7 @@ label.summary <- function(label.sjx, id.ls=NULL, label.csv, return.df=FALSE, sav
   }
   col.labels <- na.omit(col.labels)
 
-  if (!is.null(id.ls)) {
+  if (is.null(id.ls)) {
     id.ls <- label.sjx
   }
 
