@@ -18,11 +18,11 @@ An integer indicating which volume to read.
 }
 }
 \details{
-NIFTI files need to be unzipped before using this function or any other portions of the mRi package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
+NIFTI files need to be unzipped before using this function or any other portions of the nifti.io package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
 }
 \value{
-An array containing values from NIFT volume.
+An array containing values from NIFTI volume.
 }
 \author{
-Timothy R. Koscik <timkoscik+mripkg@gmail.com>
+Timothy R. Koscik <timkoscik+nifti@gmail.com>
 }

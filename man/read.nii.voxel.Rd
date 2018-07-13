@@ -18,7 +18,7 @@ A numeric vector conatining x,y,z,t coordinates indicating the location to read 
 }
 }
 \details{
-NIFTI files need to be unzipped before using this function or any other portions of the mRi package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
+NIFTI files need to be unzipped before using this function or any other portions of the nifti.io package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
 
 Values for t coordinates (coords[4]) may be Inf to retrieve all timepoints for the given x,y,z coordinates.  If data is 4D and only x, y, z coordinates are given, the value at those coordinates for the first volume only is returned.
 }
@@ -26,5 +26,5 @@ Values for t coordinates (coords[4]) may be Inf to retrieve all timepoints for t
 A number or a numeric vector containing values for all timepoints.
 }
 \author{
-Timothy R. Koscik <timkoscik+mripkg@gmail.com>
+Timothy R. Koscik <timkoscik+nifti@gmail.com>
 }

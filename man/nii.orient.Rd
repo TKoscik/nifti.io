@@ -18,5 +18,5 @@ Full directory listing to NIFTI file.
 A named list containing NIFTI orientation information (qform and sform)
 }
 \author{
-Timothy R. Koscik <timkoscik+mripkg@gmail.com>
+Timothy R. Koscik <timkoscik+nifti@gmail.com>
 }
