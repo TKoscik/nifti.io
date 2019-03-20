@@ -1,8 +1,4 @@
 load.mask <- function(data.mask, ...) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
-  
   stopifnot(!missing(data.mask))
   
   temp.mask <- data.mask
