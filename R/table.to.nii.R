@@ -9,7 +9,7 @@ table.to.nii <- function(in.table, coords, img.dims, save.dir, prefix, model, pi
     in.table <- as.matrix(in.table)
   }
   
-  log.name <- paste0(save.dir, "/", prefix, ".", var.name, ".log.txt")
+  log.name <- paste0(save.dir, "/", prefix, "_", var.name, "-log.txt")
   if (!file.exists(log.name)) {
     if (!missing(model)) {
       write.table(paste0("Model: ", deparse(formula(model))), log.name,
@@ -42,7 +42,7 @@ table.to.nii <- function(in.table, coords, img.dims, save.dir, prefix, model, pi
     } else {
       suffix <- paste0("X", i) # if table is unnamed call it X
     }
-    fname <- paste0(save.dir, "/", prefix, ".", var.name, ".", suffix)
+    fname <- paste0(save.dir, "/", prefix, "_", var.name, "-", suffix)
     if (!file.exists(paste0(fname, ".nii"))) {
       init.nii(file.name=paste0(fname, ".nii"),
                dims=c(img.dims[1:3], nrow(in.table)),
