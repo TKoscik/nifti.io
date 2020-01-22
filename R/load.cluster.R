@@ -3,7 +3,7 @@ load.cluster <- function(data.4d, data.mask, mask.vol, verbose=FALSE) {
   # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
   #-------------------------------------------------------------------------------------
   
-  data.4d <- parse.4d(data.4d)[[1]]
+  #data.4d <- parse.4d(data.4d)[[1]]
   n.4d <- length(data.4d)
   
   stopifnot(all(mask.vol > 0))
