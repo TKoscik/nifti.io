@@ -1,7 +1,4 @@
 load.cluster <- function(data.nii, data.mask, mask.values=1, verbose=FALSE) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
   
   n.nii <- length(data.nii)
   
