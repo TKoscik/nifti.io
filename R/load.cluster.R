@@ -1,31 +1,32 @@
-load.cluster <- function(data.4d, data.mask, mask.vol, verbose=FALSE) {
+load.cluster <- function(data.nii, data.mask, mask.values=1, verbose=FALSE) {
   #-------------------------------------------------------------------------------------
   # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
   #-------------------------------------------------------------------------------------
   
-  #data.4d <- parse.4d(data.4d)[[1]]
-  n.4d <- length(data.4d)
+  n.nii <- length(data.nii)
   
   stopifnot(all(mask.vol > 0))
   
-  n.masks <- length(mask.vol)
-  mask <- vector("list", n.masks)
-  for (i in 1:n.masks) {
-    mask[[i]] <- read.nii.volume(data.mask, mask.vol[i])
+  mask <- read.nii.volume(data.mask, 1)
+  n.masks <- length(mask.values)
+  mask.idx <- vector("list", n.masks)
+  for (i in 1:length(mask.values)) {
+    mask.idx[[i]] <- which(mask == mask.values[i], arr.ind=TRUE)
   }
   
-  fmri <- vector("list", length(mask.vol))
-  for (i in 1:n.4d) {
-    n.vols <- nii.dims(data.4d[i])[4]
+  
+  nii <- vector("list", length(mask.vol))
+  for (i in 1:n.nii) {
+    n.vols <- nii.dims(data.nii[i])[4]
     for (j in 1:n.vols) {
-      fmri.temp <- read.nii.volume(data.4d[i], j)
+      nii.temp <- read.nii.volume(data.nii[i], j)
       for (k in 1:n.masks) {
-        fmri[[k]] <- c(fmri[[k]], mean(fmri.temp[mask[[k]]!=0], na.rm=TRUE))
+        nii[[k]] <- c(nii[[k]], mean(nii.temp[mask.idx[[k]]], na.rm=TRUE))
         if (verbose) {
-          print(paste0("Extracting ", k, " of ", n.masks, " ROIs from ", j, " of ", n.vols, " volumes from ", i, " of ", n.4d, " 4D files."))
+          print(paste0("Extracting ", k, " of ", n.masks, " ROIs from ", j, " of ", n.vols, " volumes from ", i, " of ", n.nii, " NII files."))
         }
       }
     }
   }
-  return(fmri)
+  return(nii)
 }
