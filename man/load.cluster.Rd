@@ -3,12 +3,12 @@
 \title{temp.title}
 \description{}
 \usage{
-  load.cluster(data.4d, data.mask, mask.vol, verbose=FALSE)
+  load.cluster(data.nii, data.mask, mask.values, verbose=FALSE)
 }
 \arguments{
-  \item{data.4d}{}
+  \item{data.nii}{}
   \item{data.mask}{}
-  \item{mask.vol}{}
+  \item{mask.values}{}
   \item{verbose}{}
 }
 \value{}
