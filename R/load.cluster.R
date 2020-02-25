@@ -1,10 +1,13 @@
-load.cluster <- function(data.nii, data.mask, mask.values=1, verbose=FALSE) {
+load.cluster <- function(data.nii, data.mask, mask.values="all", verbose=FALSE) {
   
   n.nii <- length(data.nii)
   
   stopifnot(all(mask.vol > 0))
   
   mask <- read.nii.volume(data.mask, 1)
+  if (mask.values == "all") {
+    mask.values <- sort(unique(as.numeric(mask)))[-1]
+  }
   n.masks <- length(mask.values)
   mask.idx <- vector("list", n.masks)
   for (i in 1:length(mask.values)) {
