@@ -12,8 +12,7 @@ load.cluster <- function(data.nii, data.mask, mask.values="all", verbose=FALSE) 
     mask.idx[[i]] <- which(mask == mask.values[i], arr.ind=TRUE)
   }
   
-  
-  nii <- vector("list", length(mask.vol))
+  nii <- vector("list", length(mask.values))
   for (i in 1:n.nii) {
     n.vols <- nii.dims(data.nii[i])[4]
     for (j in 1:n.vols) {
