@@ -1,8 +1,5 @@
 table.to.nii <- function(in.table, coords, img.dims, save.dir, prefix, model, pixdim=NULL, orient=NULL) {
-  #-------------------------------------------------------------------------------------
-  # Copyright (C) 2017 Koscik, Timothy R. All Rights Reserved
-  #-------------------------------------------------------------------------------------
-  
+
   var.name <- deparse(substitute(in.table)) # retrieve table name
   
   if (!is.matrix(in.table) | !is.data.frame(in.table)) {
