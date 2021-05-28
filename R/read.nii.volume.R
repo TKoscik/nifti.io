@@ -5,8 +5,8 @@ read.nii.volume <- function(nii.file, vol.num) {
   stopifnot(!missing(vol.num), is.numeric(vol.num), length(vol.num)==1)
 
   # Get necessary NII file info ------------------------------------------------
-  dims <- nii.dims(nii.file)
-  hdr <- nii.hdr(nii.file, field = c("vox_offset", "datatype", "bitpix"))
+  dims <- info.nii(nii.file, field="voxels")
+  hdr <- info.nii(nii.file, field = c("vox_offset", "datatype", "bitpix"))
 
   # Check if volume number is in range -----------------------------------------
   if (vol.num > dims[4]) {stop("Volume number exceeds number of volumes")}
@@ -28,9 +28,14 @@ read.nii.volume <- function(nii.file, vol.num) {
     `4` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `8` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `16` = readBin(fid, double(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
+    `32` = readBin(fid, double(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `64` = readBin(fid, double(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
+    `128` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
+    `256` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `512` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     `768` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
+    `1024` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
+    `1280` = readBin(fid, integer(), prod(dims[1:3]), hdr$bitpix/8, endian=endian),
     stop(paste("Data type", as.character(hdr$datatype), "unsupported in", nii.file)))
   data <- array(data, dim=dims[1:3])
 
