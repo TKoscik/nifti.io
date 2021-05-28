@@ -10,5 +10,5 @@
   \item{orient}{A named list with the following elements, qform_code [integer(1)], sform_code [integer(1)], quatern_b [numeric(1)], quatern_c [numeric(1)], quatern_d [numeric(1)], qoffset_x [numeric(1)], qoffset_y [numeric(1)], qoffset_z [numeric(1)], srow_x [numeric(3)], srow_y [numeric(3)], srow_z [numeric(3)]}
 }
 \author{
-Timothy R. Koscik <timkoscik+nifti@gmail.com>
+Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
