@@ -5,7 +5,7 @@ read.nii.voxel <- function(nii.file, coords) {
             !missing(coords), any(length(coords)==3, length(coords==4)))
 
   # Get necessary NII file info --------------------------------------------------
-  dims <- info.nii(nii.file, field = "dims")[2:5]
+  dims <- info.nii(nii.file, field = "dim")[2:5]
   hdr <- nii.hdr(nii.file, field = c("vox_offset", "datatype", "bitpix"))
 
   # Check if coordinates are in range
