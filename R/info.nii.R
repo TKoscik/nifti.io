@@ -5,7 +5,55 @@ nii.hdr <- function(nii.file, field="all") {
   fid <- file(nii.file, "rb")
   endian <- .Platform$endian
 
-  if (field[1] == "all") {
+  # special cases ------------------------------------------------------------
+  chk.ls <- c("dimensions", "dims", "size", "sz", "voxels", "vxls", "xyz")
+  if (as.logical(charmatch(field[1], chk.ls))) {
+    invisible(seek(fid, 40, "start", "rb"))
+    xyz <- readBin(fid, integer(), 8, size = 2, endian = endian)
+    xyz <- xyz[1:3]
+    close(fid)
+    return xyz
+  }
+  
+  chk.ls <- c("space", "spacing")
+  if (as.logical(charmatch(field[1], chk.ls))) {
+    invisible(seek(fid, 40, "start", "rb"))
+    spacing <- readBin(fid, numeric(), 8, size = 4, endian = endian)
+    bad_vals = !is.finite(spacing)
+    if (any(bad_vals)) { spacing[bad_vals] = 1 }
+    close(fid)
+    return spacing
+  }
+  
+  chk.ls <- c("volumes", "vols", "trs")
+    if (as.logical(charmatch(field[1], chk.ls))) {
+    invisible(seek(fid, 40, "start", "rb"))
+    nvol <- readBin(fid, integer(), 8, size = 2, endian = endian)
+    nvol <- nvol[4]
+    close(fid)
+    return nvol
+  }
+  
+  if (as.logical(pmatch(field[1], "orientation"))) {
+    orient <- list()
+    seek(fid, where=252, origin="start", size=1)
+    orient$qform_code <- readBin(fid, integer(), size = 2, endian = endian)
+    orient$sform_code <- readBin(fid, integer(), size = 2, endian = endian)
+    orient$quatern_b <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$quatern_c <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$quatern_d <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$qoffset_x <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$qoffset_y <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$qoffset_z <- readBin(fid, numeric(), size = 4, endian = endian)
+    orient$srow_x <- readBin(fid, numeric(), 4, size = 4, endian = endian)
+    orient$srow_y <- readBin(fid, numeric(), 4, size = 4, endian = endian)
+    orient$srow_z <- readBin(fid, numeric(), 4, size = 4, endian = endian)
+    close(fid)
+    return(orient)
+  }
+  
+  # general header information --------------------------------------------------
+  if (field[1] == "hdr") {
     field <- c("sizeof_hdr", "data_type", "db_name", "extents", "session_error",
                "regular", "dim_info", "dim", "intent_p1", "intent_p2", "intent_p3",
                "intent_code", "datatype", "bitpix", "slice_start", "pixdim",
@@ -15,7 +63,7 @@ nii.hdr <- function(nii.file, field="all") {
                "quatern_b", "quatern_c", "quatern_d", "qoffset_x", "qoffset_y",
                "qoffset_z", "srow_x", "srow_y", "srow_z", "intent_name", "magic")
   }
-
+  
   hdr <- list()
 
   if ("sizeof_hdr" %in% field) {
