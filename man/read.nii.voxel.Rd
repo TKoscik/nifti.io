@@ -26,5 +26,5 @@ Values for t coordinates (coords[4]) may be Inf to retrieve all timepoints for t
 A number or a numeric vector containing values for all timepoints.
 }
 \author{
-Timothy R. Koscik <timkoscik+nifti@gmail.com>
+Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
