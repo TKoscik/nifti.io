@@ -1,6 +1,6 @@
 \name{write.nii.volume}
 \alias{write.nii.volume}
-\title{temp.title}
+\title{Write NII Volume}
 \description{}
 \usage{
   write.nii.volume(nii.file, vol.num, values)
@@ -17,5 +17,5 @@ NIFTI files need to be unzipped before using this function or any other portions
 Output directly to NIFTI file.
 }
 \author{
-  Timothy R. Koscik <timkoscik+nifti@gmail.com>
+  Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
