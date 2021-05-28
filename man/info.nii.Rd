@@ -5,7 +5,7 @@ Read NIFTI-1 Header Information
 }
 \description{Read NIFTI-1 Header Information}
 \usage{
-nii.hdr(nii.file, field="all")
+nii.hdr(nii.file, field="hdr")
 }
 \arguments{
   \item{nii.file}{Full directory listing to NIFTI file.}
