@@ -5,7 +5,7 @@ read.nii.volume <- function(nii.file, vol.num) {
   stopifnot(!missing(vol.num), is.numeric(vol.num), length(vol.num)==1)
 
   # Get necessary NII file info ------------------------------------------------
-  dims <- info.nii(nii.file, field="voxels")
+  dims <- info.nii(nii.file, field="xyz")
   hdr <- info.nii(nii.file, field = c("vox_offset", "datatype", "bitpix"))
 
   # Check if volume number is in range -----------------------------------------
