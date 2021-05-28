@@ -4,23 +4,20 @@ write.nii.voxel <- function(nii.file, coords, value) {
             !missing(coords), !missing(value))
 
   # Get necessary NII file info ------------------------------------------------
-  dims <- nii.dims(nii.file)
-  hdr <- nii.hdr(nii.file, field = c("vox_offset", "datatype", "bitpix"))
+  dims <- info.nii(nii.file, field="dim")[2:5]
+  hdr <- info.nii(nii.file, field = c("vox_offset", "datatype", "bitpix"))
 
   # Check if coordinates are in range ------------------------------------------
-  for (i in 1:length(coords)) {
-    stopifnot(coords[i] <= dims[i])
-  }
+  for (i in 1:length(coords)) { stopifnot(coords[i] <= dims[i]) }
 
   # Convert value to format from NII file --------------------------------------
-  value <- switch(as.character(hdr$datatype),
-                  `2` = as.integer(value),
-                  `4` = as.integer(value),
-                  `8` = as.integer(value),
-                  `16` = as.double(value),
-                  `64` = as.double(value),
-                  `512` = as.integer(values),
-                  stop("Error converting value format"))
+  if (hdr$datatype %in% c(2,4,8,128,256,512,768,1024,1280) {
+    value <- as.integer(value)
+  } else if (hdr$datatype %in% c(16, 32, 64)) {
+    value <- as.double(value)
+  } else {
+    stop("Error converting value format"))
+  }
 
   # Calculate write location ---------------------------------------------------
   n <- length(coords)
@@ -41,13 +38,13 @@ write.nii.voxel <- function(nii.file, coords, value) {
        rw="write")
 
   # Write Value ----------------------------------------------------------------
-  switch(as.character(hdr$datatype),
-         `2` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
-         `4` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
-         `8` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
-         `16` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
-         `64` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
-         stop("Error writing to file."))
-
+  #switch(as.character(hdr$datatype),
+  #       `2` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
+  #       `4` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
+  #       `8` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
+  #       `16` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
+  #       `64` = writeBin(value, fid, size=hdr$bitpix/8, endian=endian),
+  #       stop("Error writing to file."))
+  writeBin(value, fid, size=hdr$bitpix/8, endian=endian)
   close(fid)
 }
