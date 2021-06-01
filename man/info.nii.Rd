@@ -22,25 +22,26 @@ Subset of specific header items: 'sizeof_hdr', 'data_type', 'db_name', 'extents'
 Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
 \examples{
-\dontrun{
-# specify directory listing to NII file as a string
-nii.file <- "~/file.nii"
+  \dontrun{
+    # specify directory listing to NII file as a string
+    nii.file <- "~/file.nii"
 
-# get the number of voxels in the 3-dimensional volume of the specified image
-image.size <- info.nii(nii.file = nii.file, field = "dimensions")
+    # get the number of voxels in the 3-dimensional volume of the specified image
+    image.size <- info.nii(nii.file = nii.file, field = "dimensions")
 
-# get the size in mm of the volume
-image.spacing <- info.nii(nii.file = nii.file, field = "spacing")
+    # get the size in mm of the volume
+    image.spacing <- info.nii(nii.file = nii.file, field = "spacing")
 
-# get the number of volumes
-image.volumes <- info.nii(nii.file = nii.file, field = "volumes")
+    # get the number of volumes
+    image.volumes <- info.nii(nii.file = nii.file, field = "volumes")
 
-# get list containing orientation parameters
-image.orientation <- info.nii(nii.file = nii.file, field = "orientation")
+    # get list containing orientation parameters
+    image.orientation <- info.nii(nii.file = nii.file, field = "orientation")
 
- # get entire header from NII file
-image.hdr <- info.nii(nii.file = nii.file, field = "hdr")
+    # get entire header from NII file
+    image.hdr <- info.nii(nii.file = nii.file, field = "hdr")
 
-# get a specific element in the header
-image.hdr.datatype <- info.nii(nii.file = nii.file, field = "datatype")
+    # get a specific element in the header
+    image.hdr.datatype <- info.nii(nii.file = nii.file, field = "datatype")
+  }
 }
