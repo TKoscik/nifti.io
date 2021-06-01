@@ -11,12 +11,12 @@ Retrieve information from the NIFTI header of the specified file. The entire hea
 }
 \details{
 Fields can take a number of different values indicating the entire header, a specific item or subset of header values or set of useful values.
-\item Number of voxels in XYZ planes: 'dimensions', 'dims', 'size', 'sz', 'voxels', 'vxls', 'xyz'
-\item Voxel spacing: 'space', 'spacing'
-\item Number of Volumes: 'volumes', 'vols', 'trs'
-\item Orientation fields: 'orientation'
-\item Entire Header as list object: 'hdr'
-\item Subset of specific header items: 'sizeof_hdr', 'data_type', 'db_name', 'extents', 'session_error', 'regular', 'dim_info', 'dim', 'intent_p1', 'intent_p2', 'intent_p3', 'intent_code', 'datatype', 'bitpix', 'slice_start', 'pixdim', 'vox_offset', 'scl_slope', 'scl_inter', 'slice_end', 'slice_code', 'xyzt_units', 'cal_max', 'cal_min', 'slice_duration', 'toffset', 'glmax', 'glmin', 'descrip', 'aux_file', 'qform_code', 'sform_code', 'quatern_b', 'quatern_c', 'quatern_d', 'qoffset_x', 'qoffset_y', 'qoffset_z', 'srow_x', 'srow_y', 'srow_z', 'intent_name', 'magic'
+\cr Number of voxels in XYZ planes: 'dimensions', 'dims', 'size', 'sz', 'voxels', 'vxls', 'xyz'
+\cr Voxel spacing: 'space', 'spacing'
+\cr Number of Volumes: 'volumes', 'vols', 'trs'
+\cr Orientation fields: 'orientation'
+\cr Entire Header as list object: 'hdr'
+\cr Subset of specific header items: 'sizeof_hdr', 'data_type', 'db_name', 'extents', 'session_error', 'regular', 'dim_info', 'dim', 'intent_p1', 'intent_p2', 'intent_p3', 'intent_code', 'datatype', 'bitpix', 'slice_start', 'pixdim', 'vox_offset', 'scl_slope', 'scl_inter', 'slice_end', 'slice_code', 'xyzt_units', 'cal_max', 'cal_min', 'slice_duration', 'toffset', 'glmax', 'glmin', 'descrip', 'aux_file', 'qform_code', 'sform_code', 'quatern_b', 'quatern_c', 'quatern_d', 'qoffset_x', 'qoffset_y', 'qoffset_z', 'srow_x', 'srow_y', 'srow_z', 'intent_name', 'magic'
 }
 \value{A vector or named list containing the requested output}
 \author{
