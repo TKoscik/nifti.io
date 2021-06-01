@@ -20,12 +20,12 @@ Output directly to NIFTI file.
   Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
 \example{
-  \dontrun{
-    reference.image = "~/reference_image.nii"
-    pixdim = info.nii(nii.file = reference.image, field="pixdim")
-    orientation = info.nii(nii.file = reference.image, field="orientation")
-    init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)
-    new.values <- rnorm(prod(c(100,100,100)))
-    write.nii.volume(nii.file = "~/example_image.nii", vol.num = 1, values = new.values)
-  }
+\dontrun{
+reference.image = "~/reference_image.nii"
+pixdim = info.nii(nii.file = reference.image, field="pixdim")
+orientation = info.nii(nii.file = reference.image, field="orientation")
+init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)
+new.values <- rnorm(prod(c(100,100,100)))
+write.nii.volume(nii.file = "~/example_image.nii", vol.num = 1, values = new.values)
+}
 }
