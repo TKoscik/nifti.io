@@ -3,8 +3,8 @@ Type: Package
 Title: Read and Write NIFTI-1 Files
 Version: 1.0.0
 Author: Timothy R. Koscik [aut, cre]
-Maintainer: Timothy R. Koscik <timothy-koscik@uiowa.edu>
+Maintainer: Timothy Koscik <timothy-koscik@uiowa.edu>
 Depends: R (>= 3.5.0)
 Description: A set of tools for reading and writing NIFTI-1 files. Unique operations include voxelwise read/write operations and a simplified method to write table contents to NIFTI_1 files. While compressed files cannot be used, memory requirements and read/write speed are optimized.
-License: MIT
+License: "MIT + file LICENSE"
 Encoding: UTF-8
