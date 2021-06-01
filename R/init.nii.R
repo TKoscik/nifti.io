@@ -1,19 +1,25 @@
-init.nii <- function(nii.file, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
+init.nii <- function(nii.file, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
   fid <- file(nii.file, "w+b")
-
-  if (is.null(pixdim)) { pixdim <- c(-1,2,2,2,1,0,0,0) }
-  if (is.null(orient)) {
-    orient$qform_code <- 2
-    orient$sform_code <- 2
-    orient$quatern_b <- 0
-    orient$quatern_c <- 1
-    orient$quatern_d <- 0
-    orient$qoffset_x <- 90
-    orient$qoffset_y <- -126
-    orient$qoffset_z <- -72
-    orient$srow_x <- c(-2,0,0,90)
-    orient$srow_y <- c(0,2,0,-126)
-    orient$srow_z <- c(0,0,2,-72)
+  
+  if (!is.null(ref.nii)) {
+    dims <- info.nii(ref.nii, "xyz")
+    pixdim <- info.nii(ref.nii, "pixdim")
+    orient <- info.nii(ref.nii, "orient") 
+  } else {
+    if (is.null(pixdim)) { pixdim <- c(-1,2,2,2,1,0,0,0) }
+    if (is.null(orient)) {
+      orient$qform_code <- 2
+      orient$sform_code <- 2
+      orient$quatern_b <- 0
+      orient$quatern_c <- 1
+      orient$quatern_d <- 0
+      orient$qoffset_x <- 90
+      orient$qoffset_y <- -126
+      orient$qoffset_z <- -72
+      orient$srow_x <- c(-2,0,0,90)
+      orient$srow_y <- c(0,2,0,-126)
+      orient$srow_z <- c(0,0,2,-72)
+    }
   }
 
   datatype.lut <- c(2L, 4L,  8L,  16L, 32L, 64L, 128L, 256L, 512L, 768L, 1024L, 1280L)
