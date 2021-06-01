@@ -1,14 +1,11 @@
 Package: nifti.io
 Type: Package
-Title: A set of tools for manipulating NIFTI-1 Files
+Title: Read and Write NIFTI-1 Files
 Version: 0.1.0
-Author: Timothy R. Koscik
+Author: Timothy R. Koscik [aut, cre]
 Maintainer: Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 Depends: R (>= 3.5.0)
-Suggests: 
-Description: A set of tools for reading and writing NIFTI-1 files.
-    Including volumewise and voxelwise read and write operations.
-    NIFTI files need to be unzipped before using any functions within the nifti.io package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
+Description: This package provides a set of tools for reading and writing NIFTI-1 files. Unique operations include voxelwise read/write operations and a simplified method to write table contents to NIFTI_1 files. While compressed files cannot be used, memory requirements and read/write speed are optimized.
 License: MIT
 Encoding: UTF-8
 LazyData: true
