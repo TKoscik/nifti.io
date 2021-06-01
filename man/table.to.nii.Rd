@@ -28,7 +28,7 @@
 }
 \value{Output directly to log.text file and write to specified coordinates in a set of NII files.}
 \author{
-  Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
+  Timothy R. Koscik <timothy-koscik@uiowa.edu>
 }
 \examples{
 \dontrun{
