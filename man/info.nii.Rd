@@ -1,8 +1,8 @@
 \name{info.nii}
 \alias{info.nii}
-\title{Retrieve NIFTI-1 Header Information}
+\title{Retrieve NIFTI Header Information}
 \description{
-Retrieve information from the NIFTI-1 header of the specified file. The entire header can be retrieved as a list, or a single or subset of items can be specified as a character vector to get specific information. There are several special cases implemented including getting number of voxels, number of volumes, image spacing, and orientation.
+Retrieve information from the NIFTI header of the specified file. The entire header can be retrieved as a list, or a single or subset of items can be specified as a character vector to get specific information. There are several special cases implemented including getting number of voxels, number of volumes, image spacing, and orientation.
 }
 \usage{info.nii(nii.file = nii.file, field="hdr")}
 \arguments{
@@ -14,9 +14,10 @@ Fields can take a number of different values indicating the entire header, a spe
 Number of voxels in XYZ planes: 'dimensions', 'dims', 'size', 'sz', 'voxels', 'vxls', 'xyz'
 Voxel spacing: 'space', 'spacing'
 Number of Volumes: 'volumes', 'vols', 'trs'
-Orientation fields: 'orientation' [partial matching]
+Orientation fields: 'orientation'
 Entire Header as list object: 'hdr'
-Subset of specific header items: 'sizeof_hdr', 'data_type', 'db_name', 'extents', 'session_error', 'regular', 'dim_info', 'dim', 'intent_p1', 'intent_p2', 'intent_p3', 'intent_code', 'datatype', 'bitpix', 'slice_start', 'pixdim', 'vox_offset', 'scl_slope', 'scl_inter', 'slice_end', 'slice_code', 'xyzt_units', 'cal_max', 'cal_min', 'slice_duration', 'toffset', 'glmax', 'glmin', 'descrip', 'aux_file', 'qform_code', 'sform_code', 'quatern_b', 'quatern_c', 'quatern_d', 'qoffset_x', 'qoffset_y', 'qoffset_z', 'srow_x', 'srow_y', 'srow_z', 'intent_name', 'magic'}
+Subset of specific header items: 'sizeof_hdr', 'data_type', 'db_name', 'extents', 'session_error', 'regular', 'dim_info', 'dim', 'intent_p1', 'intent_p2', 'intent_p3', 'intent_code', 'datatype', 'bitpix', 'slice_start', 'pixdim', 'vox_offset', 'scl_slope', 'scl_inter', 'slice_end', 'slice_code', 'xyzt_units', 'cal_max', 'cal_min', 'slice_duration', 'toffset', 'glmax', 'glmin', 'descrip', 'aux_file', 'qform_code', 'sform_code', 'quatern_b', 'quatern_c', 'quatern_d', 'qoffset_x', 'qoffset_y', 'qoffset_z', 'srow_x', 'srow_y', 'srow_z', 'intent_name', 'magic'
+}
 \value{A vector or named list containing the requested output}
 \author{
 Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
