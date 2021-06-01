@@ -1,5 +1,5 @@
-init.nii <- function(file.name, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
-  fid <- file(file.name, "w+b")
+init.nii <- function(nii.file, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
+  fid <- file(nii.file, "w+b")
 
   if (is.null(pixdim)) { pixdim <- c(-1,2,2,2,1,0,0,0) }
   if (is.null(orient)) {
