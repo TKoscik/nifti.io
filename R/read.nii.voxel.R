@@ -6,7 +6,7 @@ read.nii.voxel <- function(nii.file, coords) {
 
   # Get necessary NII file info --------------------------------------------------
   dims <- info.nii(nii.file, field = "dim")[2:5]
-  hdr <- nii.hdr(nii.file, field = c("vox_offset", "datatype", "bitpix"))
+  hdr <- info.nii(nii.file, field = c("vox_offset", "datatype", "bitpix"))
 
   # Check if coordinates are in range
   for (i in 1:length(coords)) {
@@ -53,7 +53,7 @@ read.nii.voxel <- function(nii.file, coords) {
       `768` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian),
       `1024` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian),
       `1280` = readBin(fid, integer(), 1, hdr$bitpix/8, endian=endian),
-      stop(paste("Data type", hdr$datatype, "unsupported in", fname)))
+      stop(paste("Data type", hdr$datatype, "unsupported in", nii.file)))
   }
   close(fid)
   return(data)
