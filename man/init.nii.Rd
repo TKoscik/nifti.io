@@ -12,7 +12,7 @@
   \item{init.value}{value to use for all voxels to initialize NII file, default=NA}
 }
 \author{
-Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
+Timothy R. Koscik <timothy-koscik@uiowa.edu>
 }
 \examples{
 \dontrun{
