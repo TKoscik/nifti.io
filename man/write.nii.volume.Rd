@@ -24,8 +24,13 @@ Output directly to NIFTI file.
 reference.image = "~/reference_image.nii"
 pixdim = info.nii(nii.file = reference.image, field="pixdim")
 orientation = info.nii(nii.file = reference.image, field="orientation")
-init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)
+init.nii(file.name = "~/example_image.nii",
+         dims = c(100,100,100),
+         pixdim = pixdim,
+         orient = orientation)
 new.values <- rnorm(prod(c(100,100,100)))
-write.nii.volume(nii.file = "~/example_image.nii", vol.num = 1, values = new.values)
+write.nii.volume(nii.file = "~/example_image.nii",
+                 vol.num = 1,
+                 values = new.values)
 }
 }
