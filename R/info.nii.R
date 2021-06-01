@@ -26,7 +26,7 @@ info.nii <- function(nii.file, field="hdr") {
   }
   
   chk.ls <- c("volumes", "vols", "trs")
-    if (as.logical(charmatch(field[1], chk.ls))) {
+  if (as.logical(charmatch(field[1], chk.ls))) {
     invisible(seek(fid, 40, "start", "rb"))
     nvol <- readBin(fid, integer(), 8, size = 2, endian = endian)
     nvol <- nvol[4]
