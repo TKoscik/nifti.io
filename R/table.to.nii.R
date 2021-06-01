@@ -33,7 +33,7 @@ table.to.nii <- function(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, m
     if (!file.exists(fname)) {
       if (!is.null(ref.image)) {
         img.dims <- info.nii(ref.image, "xyz")
-        pixdim <- unlist(info.nii(ref.image, "pixdim"))
+        pixdim <- info.nii(ref.image, "pixdim")
         orient <- info.nii(ref.image, "orientation")
       }
       init.nii(fname, c(img.dims[1:3], nrow(in.table)), pixdim, orient)
