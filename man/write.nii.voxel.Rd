@@ -27,7 +27,7 @@ NIFTI files need to be unzipped before using this function or any other portions
 Output directly to NIFTI file.
 }
 \author{
-Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
+Timothy R. Koscik <timothy-koscik@uiowa.edu>
 }
 \examples{
 \dontrun{
