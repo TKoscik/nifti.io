@@ -4,7 +4,7 @@
 Read NII Volume
 }
 \description{
-Read indicated volume from NIFTI files.
+Read indicated volume from NIfTI files.
 }
 \usage{
 read.nii.volume(nii.file, vol.num)
@@ -18,7 +18,7 @@ An integer indicating which volume to read.
 }
 }
 \details{
-NIFTI files need to be unzipped before using this function or any other portions of the nifti.io package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
+NIfTI files need to be unzipped before using this function or any other portions of the nifti.io package. This is necessary given the inconsistent way in which gzipped files are indexed (Some information on this is given in the documentation for the readBin function).
 }
 \value{
 An array containing values from NIFTI volume.
