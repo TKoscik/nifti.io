@@ -8,7 +8,7 @@ write.nii.volume <- function(nii.file, vol.num, values) {
   hdr <- info.nii(nii.file, field=c("datatype", "bitpix", "vox_offset"))
 
   # Convert value to format from NII file ------------------------------------------------
-  if (hdr$datatype %in% c(2,4,8,128,256,512,768,1024,1280) {
+  if (hdr$datatype %in% c(2,4,8,128,256,512,768,1024,1280)) {
     value <- as.integer(value)
   } else if (hdr$datatype %in% c(16, 32, 64)) {
     value <- as.double(value)
