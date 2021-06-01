@@ -22,6 +22,7 @@ Subset of specific header items: "sizeof_hdr", "data_type", "db_name", "extents"
 \author{
 Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
+
 \examples{
 \dontrun{# specify directory listing to NII file as a string}
 \dontrun{nii.file <- "~/file.nii"}
