@@ -11,8 +11,7 @@ info.nii <- function(nii.file, field="hdr") {
   chk.ls <- c("dimensions", "dims", "size", "sz", "voxels", "vxls", "xyz")
   if (field[1] %in% chk.ls) {
     invisible(seek(fid, 40, "start", "rb"))
-    tmp <- readBin(fid, integer(), 8, size = 2, endian = endian)
-    info$voxel_dimensions <- tmp[1:3]
+    info$voxel_dimensions <- readBin(fid, integer(), 8, size = 2, endian = endian)[2:4]
     names(info$voxel_dimensions) <- c("x", "y", "z")
   }
 
