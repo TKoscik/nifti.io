@@ -26,3 +26,9 @@ An array containing values from NIFTI volume.
 \author{
 Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
+\example{
+  \dontrun{
+    example.image <- "~/example_image.nii"
+    image.volume <- read.nii.volume(nii.file = example.image, vol.num = 1)
+  }
+}
