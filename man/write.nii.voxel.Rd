@@ -34,9 +34,14 @@ Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 reference.image = "~/reference_image.nii"
 pixdim = info.nii(nii.file = reference.image, field="pixdim")
 orientation = info.nii(nii.file = reference.image, field="orientation")
-init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)
+init.nii(file.name = "~/example_image.nii",
+         dims = c(100,100,100),
+         pixdim = pixdim,
+         orient = orientation)
 coordinates <- c(50,50,50)
 new.value <- rnorm(1)
-write.nii.volume(nii.file = "~/example_image.nii", coords = coordinates, value = new.value)
+write.nii.volume(nii.file = "~/example_image.nii",
+                 coords = coordinates,
+                 value = new.value)
 }
 }
