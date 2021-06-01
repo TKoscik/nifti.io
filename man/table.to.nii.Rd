@@ -9,7 +9,7 @@
                prefix=NULL,
                do.log=TRUE,
                model.string=NULL,
-               ref.image=NULL,
+               ref.nii=NULL,
                img.dims=NULL,
                pixdim=NULL,
                orient=NULL)
@@ -21,7 +21,7 @@
   \item{prefix}{prefix to be the base of filenames, default is the name of the input table object}
   \item{do.log}{logical, whether or not to write log file providing details about what the output contents are. this may be helpful for sorting through volumes.}
   \item{model.string}{A string to wirte to the log file specifying describing or specifying the model that was run}
-  \item{ref.image}{a reference NII image to draw image properties from (e.g., dimensions and orientation)}
+  \item{ref.nii}{a reference NII image to draw image properties from (e.g., dimensions and orientation)}
   \item{img.dims}{voxel dimensions of target NII file}
   \item{pixdim}{voxel dimensions of NII output}
   \item{orient}{orientation list object of NII output}
