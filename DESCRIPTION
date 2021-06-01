@@ -1,7 +1,7 @@
 Package: nifti.io
 Type: Package
 Title: Read and Write NIFTI-1 Files
-Version: 0.1.0
+Version: 1.0.0
 Author: Timothy R. Koscik [aut, cre]
 Maintainer: Timothy R. Koscik <timothy-koscik@uiowa.edu>
 Depends: R (>= 3.5.0)
