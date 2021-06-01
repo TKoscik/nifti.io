@@ -49,7 +49,7 @@ init.nii <- function(new.nii, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, data
   writeBin(0L, fid, size = 2) #intent_code
 
   writeBin(datatype, fid, size = 2) #datatype
-  writeBin(bitpix, size = 2) #bitpix
+  writeBin(bitpix, fid, size = 2) #bitpix
   writeBin(1L, fid, size = 2) #slice_start
 
   writeBin(as.double(pixdim), fid, size = 4) #pixdim
