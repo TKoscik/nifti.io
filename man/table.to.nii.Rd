@@ -22,9 +22,9 @@
   Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
 \examples{
-  \dontrun{
-    mdl <- lm(mpg ~ cyl, mtcars)
-    mdl.coef <- as.data.frame(summary(mdl)$coef))
-    table.to.nii(in.table=mdl.coef, coords=c(50,50,50), save.dir="~", prefix="exampleModel_coef", model.string="lm(mpg ~ cyl, mtcars)", ref.image="~/reference_image.nii")
-  }
+\dontrun{
+mdl <- lm(mpg ~ cyl, mtcars)
+mdl.coef <- as.data.frame(summary(mdl)$coef))
+table.to.nii(in.table=mdl.coef, coords=c(50,50,50), save.dir="~", prefix="exampleModel_coef", model.string="lm(mpg ~ cyl, mtcars)", ref.image="~/reference_image.nii")
+}
 }
