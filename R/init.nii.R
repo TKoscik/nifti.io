@@ -4,7 +4,8 @@ init.nii <- function(nii.file, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, dat
   if (!is.null(ref.nii)) {
     dims <- info.nii(ref.nii, "xyz")
     pixdim <- info.nii(ref.nii, "pixdim")
-    orient <- info.nii(ref.nii, "orient") 
+    orient <- info.nii(ref.nii, "orient")
+    datatype <- info.nii(ref.nii, "datatype")
   } else {
     if (is.null(pixdim)) { pixdim <- c(-1,2,2,2,1,0,0,0) }
     if (is.null(orient)) {
