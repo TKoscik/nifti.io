@@ -1,7 +1,7 @@
 \name{write.nii.volume}
 \alias{write.nii.volume}
-\title{Write NII Volume}
-\description{}
+\title{Write NIFTI-1 Volume}
+\description{Write values to a specific volume in a NIFTI-1 file.}
 \usage{
   write.nii.volume(nii.file, vol.num, values)
 }
