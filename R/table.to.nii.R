@@ -1,54 +1,45 @@
-table.to.nii <- function(in.table, coords, img.dims, save.dir, prefix, model, pixdim=NULL, orient=NULL) {
-
-  var.name <- deparse(substitute(in.table)) # retrieve table name
+table.to.nii <- function(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, model.string=NULL, ref.image=NULL, img.dims=NULL, pixdim=NULL, orient=NULL) {
   
-  if (!is.matrix(in.table) | !is.data.frame(in.table)) {
-    in.table <- as.matrix(in.table)
+  tbl.name <-  deparse(substitute(in.table))
+  if (!is.matrix(in.table) | !is.data.frame(in.table)) { in.table <- as.matrix(in.table) }
+  
+  # if prefix is not provided, use name of input object
+  if (is.null(prefix)) {
+    prefix <- tbl.name
+    prefix <- gsub("[[:punct:]]", "", prefix)
+    prefix <- gsub("[[:space:]]", "", prefix)
   }
   
-  log.name <- paste0(save.dir, "/", prefix, "_", var.name, "-log.txt")
-  if (!file.exists(log.name)) {
-    if (!missing(model)) {
-      write.table(paste0("Model: ", deparse(formula(model))), log.name,
-                  append=TRUE, quote=FALSE, sep=",",
-                  row.names=FALSE, col.names=FALSE)
-    } else {
-      write.table("Model: NA", log.name,
-                  append=TRUE, quote=FALSE, sep=",",
-                  row.names=FALSE, col.names=FALSE)
+  # write log if desired and if does not exist
+  if (do.log) {
+    log.name <- paste0(save.dir, "/", prefix, "_", "log.txt")
+    if (!file.exists(log.name)) {
+      log.id <- file(log.name, "wt")
+      writeLines(paste0("MODEL:", model.string), con=log.id)
+      writeLines(paste0("TABLE:", tbl.name), con=log.id)
+      writeLines(paste0("NIIFILE:", colnames(in.table)), con=log.id)
+      writeLines(paste0("VOLUME", 1:nrow(in.table), ":", rownames(in.table)), con=log.id)
+      close(log.id)
     }
-    
-    write.table(paste0("Table: ", var.name), log.name,
-                append=TRUE, quote=FALSE, sep=",",
-                row.names=FALSE, col.names=FALSE)
-    
-    write.table(paste0("NII File: ", colnames(in.table)), log.name,
-                append=TRUE, quote=FALSE, sep=",",
-                row.names=FALSE, col.names=FALSE)
-    
-    write.table(paste0("Volume ", 1:nrow(in.table), ": ", rownames(in.table)), log.name,
-                append=TRUE, quote=FALSE, sep=",",
-                row.names=FALSE, col.names=FALSE)
   }
   
+  # rename table to remove bad characters
+  colnames(in.table) <- gsub("[[:punct:]]", "", colnames(in.table))
+  colnames(in.table) <- gsub("[[:space:]]", "", colnames(in.table))
+  
+  # output data                 
   for (i in 1:ncol(in.table)) {
-    if (!is.null(colnames(in.table))) {
-      suffix <- colnames(in.table)[i]
-      suffix <- gsub("[[:punct:]]", "", suffix) # Remove invalid characters
-      suffix <- gsub("[[:space:]]", "", suffix)
-    } else {
-      suffix <- paste0("X", i) # if table is unnamed call it X
-    }
-    fname <- paste0(save.dir, "/", prefix, "_", var.name, "-", suffix)
-    if (!file.exists(paste0(fname, ".nii"))) {
-      init.nii(file.name=paste0(fname, ".nii"),
-               dims=c(img.dims[1:3], nrow(in.table)),
-               pixdim=pixdim, orient=orient)
+    fname <- paste0(save.dir, "/", prefix, "_", colnames(in.table)[i], ".nii")
+    if (!file.exists(fname)) {
+      if (!is.null(ref.image)) {
+        img.dims <- info.nii(ref.image, "xyz")
+        pixdim <- unlist(info.nii(ref.image, "pixdim"))
+        orient <- info.nii(ref.image, "orientation")
+      }
+      init.nii(fname, c(img.dims[1:3], nrow(in.table)), pixdim, orient)
     }
     for (j in 1:nrow(in.table)) {
-      if (!is.na(in.table[j,i])) {
-        write.nii.voxel(paste0(fname, ".nii"), coords=c(coords,j), value=in.table[j,i])
-      }
+      write.nii.voxel(nii.file=fname, coords=c(coords,j), value=in.table[j,i])
     }
   }
 }
