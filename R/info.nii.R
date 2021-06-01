@@ -53,7 +53,7 @@ info.nii <- function(nii.file, field="all") {
   }
   
   # general header information --------------------------------------------------
-  if (field[1] == "hdr") {
+  if (field[1] %in% c("all", "hdr", "header")) {
     field <- c("sizeof_hdr", "data_type", "db_name", "extents", "session_error",
                "regular", "dim_info", "dim", "intent_p1", "intent_p2", "intent_p3",
                "intent_code", "datatype", "bitpix", "slice_start", "pixdim",
