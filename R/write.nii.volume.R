@@ -9,9 +9,9 @@ write.nii.volume <- function(nii.file, vol.num, values) {
 
   # Convert value to format from NII file ------------------------------------------------
   if (hdr$datatype %in% c(2,4,8,128,256,512,768,1024,1280)) {
-    value <- as.integer(value)
+    values <- as.integer(values)
   } else if (hdr$datatype %in% c(16, 32, 64)) {
-    value <- as.double(value)
+    values <- as.double(values)
   } else {
     stop("Error converting value format")
   }
