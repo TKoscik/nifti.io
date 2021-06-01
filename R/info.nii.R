@@ -1,4 +1,4 @@
-nii.hdr <- function(nii.file, field="all") {
+info.nii <- function(nii.file, field="all") {
 
   stopifnot(file.exists(nii.file))
 
