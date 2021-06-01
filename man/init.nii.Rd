@@ -15,7 +15,7 @@ Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 \example{
   \dontrun{
     reference.image = "~/reference_image.nii"
-    pixdim = unlist(info.nii(nii.file = reference.image, field="pixdim"))
+    pixdim = info.nii(nii.file = reference.image, field="pixdim")
     orientation = info.nii(nii.file = reference.image, field="orientation")
     init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)    
   }
