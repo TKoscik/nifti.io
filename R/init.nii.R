@@ -1,5 +1,5 @@
 init.nii <- function(new.nii, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
-  fid <- file(nii.file, "w+b")
+  fid <- file(new.nii, "w+b")
   
   if (!is.null(ref.nii)) {
     dims <- info.nii(ref.nii, "xyz")
