@@ -3,7 +3,16 @@
 \title{Table to NII file}
 \description{Write Dataframe or Matrix to NII file}
 \usage{
-  table.to.nii(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, model.string=NULL, ref.image=NULL, img.dims=NULL, pixdim=NULL, orient=NULL)
+  table.to.nii(in.table,
+               coords,
+               save.dir,
+               prefix=NULL,
+               do.log=TRUE,
+               model.string=NULL,
+               ref.image=NULL,
+               img.dims=NULL,
+               pixdim=NULL,
+               orient=NULL)
 }
 \arguments{
   \item{in.table}{dataframe or matrix object to output to NII file}
