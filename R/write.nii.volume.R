@@ -13,7 +13,7 @@ write.nii.volume <- function(nii.file, vol.num, values) {
   } else if (hdr$datatype %in% c(16, 32, 64)) {
     value <- as.double(value)
   } else {
-    stop("Error converting value format"))
+    stop("Error converting value format")
   }
 
   # Calculate write location -------------------------------------------------------------
