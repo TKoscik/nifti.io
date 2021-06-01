@@ -12,11 +12,11 @@
 \author{
 Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
-\example{
-  \dontrun{
-    reference.image = "~/reference_image.nii"
-    pixdim = info.nii(nii.file = reference.image, field="pixdim")
-    orientation = info.nii(nii.file = reference.image, field="orientation")
-    init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)    
-  }
+\examples{
+\dontrun{
+reference.image = "~/reference_image.nii"
+pixdim = info.nii(nii.file = reference.image, field="pixdim")
+orientation = info.nii(nii.file = reference.image, field="orientation")
+init.nii(file.name = "~/example_image.nii", dims = c(100,100,100), pixdim = pixdim, orient = orientation)    
+}
 }
