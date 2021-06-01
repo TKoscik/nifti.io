@@ -1,12 +1,12 @@
 \name{info.nii}
 \alias{info.nii}
-\title{Retrieve NIFTI Header Information}
+\title{Retrieve NIfTI Header Information}
 \description{
-Retrieve information from the NIFTI header of the specified file. The entire header can be retrieved as a list, or a single or subset of items can be specified as a character vector to get specific information. There are several special cases implemented including getting number of voxels, number of volumes, image spacing, and orientation.
+Retrieve information from the NIfTI header of the specified file. The entire header can be retrieved as a list, or a single or subset of items can be specified as a character vector to get specific information. There are several special cases implemented including getting number of voxels, number of volumes, image spacing, and orientation.
 }
 \usage{info.nii(nii.file, field="hdr")}
 \arguments{
-  \item{nii.file}{Full directory listing to NIFTI file.}
+  \item{nii.file}{Full directory listing to NIfTI file.}
   \item{field}{A character vector of field names to be returned.}
 }
 \details{
