@@ -1,4 +1,4 @@
-init.nii <- function(nii.file, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
+init.nii <- function(new.nii, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA) {
   fid <- file(nii.file, "w+b")
   
   if (!is.null(ref.nii)) {
