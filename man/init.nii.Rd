@@ -2,7 +2,7 @@
 \alias{init.nii}
 \title{Initialize Empty NIFTI File}
 \description{This function is used to initialize an empty NIFTI file. It creates the file volume-by-volume rather than a bulk array write operation such that massive arrays do not need to be loaded into memory}
-\usage{init.nii(file.name, dims, pixdim=NULL, orient=NULL)}
+\usage{init.nii(nii.file, dims, pixdim=NULL, orient=NULL)}
 \arguments{
   \item{nii.file}{Full file path for the file to be written, must have .nii extension}
   \item{dims}{a numeric vector specifying the image dimensions, e.g., c(X,Y,Z,T)}
