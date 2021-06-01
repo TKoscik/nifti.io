@@ -12,7 +12,7 @@ nii.hdr <- function(nii.file, field="all") {
     xyz <- readBin(fid, integer(), 8, size = 2, endian = endian)
     xyz <- xyz[1:3]
     close(fid)
-    return xyz
+    return(xyz)
   }
   
   chk.ls <- c("space", "spacing")
@@ -22,7 +22,7 @@ nii.hdr <- function(nii.file, field="all") {
     bad_vals = !is.finite(spacing)
     if (any(bad_vals)) { spacing[bad_vals] = 1 }
     close(fid)
-    return spacing
+    return(spacing)
   }
   
   chk.ls <- c("volumes", "vols", "trs")
@@ -31,7 +31,7 @@ nii.hdr <- function(nii.file, field="all") {
     nvol <- readBin(fid, integer(), 8, size = 2, endian = endian)
     nvol <- nvol[4]
     close(fid)
-    return nvol
+    return(nvol)
   }
   
   if (as.logical(pmatch(field[1], "orientation"))) {
@@ -293,5 +293,6 @@ nii.hdr <- function(nii.file, field="all") {
   }
 
   close(fid)
+  if (length(hdr) == 1) { hdr <- unlist(hdr) }
   return(hdr)
 }
