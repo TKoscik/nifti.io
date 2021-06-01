@@ -19,7 +19,7 @@ Output directly to NIFTI file.
 \author{
   Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
-\example{
+\examples{
 \dontrun{
 reference.image = "~/reference_image.nii"
 pixdim = info.nii(nii.file = reference.image, field="pixdim")
