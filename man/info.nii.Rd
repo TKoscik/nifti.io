@@ -20,7 +20,7 @@ Fields can take a number of different values indicating the entire header, a spe
 }
 \value{A vector or named list containing the requested output}
 \author{
-Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
+Timothy R. Koscik <timothy-koscik@uiowa.edu>
 }
 \examples{
 \dontrun{
