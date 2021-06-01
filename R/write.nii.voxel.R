@@ -16,7 +16,7 @@ write.nii.voxel <- function(nii.file, coords, value) {
   } else if (hdr$datatype %in% c(16, 32, 64)) {
     value <- as.double(value)
   } else {
-    stop("Error converting value format"))
+    stop("Error converting value format")
   }
 
   # Calculate write location ---------------------------------------------------
