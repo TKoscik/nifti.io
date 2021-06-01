@@ -17,7 +17,7 @@
   \item{pixdim}{voxel dimensions of NII output}
   \item{orient}{orientation list object of NII output}
 }
-\value{Output directly to log.text filw and write to specified coordinates in a set of NII files.}
+\value{Output directly to log.text file and write to specified coordinates in a set of NII files.}
 \author{
   Timothy R. Koscik <timkoscik+nifti.io@gmail.com>
 }
