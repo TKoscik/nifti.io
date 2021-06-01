@@ -1,4 +1,4 @@
-table.to.nii <- function(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, model.string=NULL, ref.image=NULL, img.dims=NULL, pixdim=NULL, orient=NULL) {
+table.to.nii <- function(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, model.string=NULL, ref.nii=NULL, img.dims=NULL, pixdim=NULL, orient=NULL) {
   
   tbl.name <-  deparse(substitute(in.table))
   if (!is.matrix(in.table) | !is.data.frame(in.table)) { in.table <- as.matrix(in.table) }
@@ -31,12 +31,15 @@ table.to.nii <- function(in.table, coords, save.dir, prefix=NULL, do.log=TRUE, m
   for (i in 1:ncol(in.table)) {
     fname <- paste0(save.dir, "/", prefix, "_", colnames(in.table)[i], ".nii")
     if (!file.exists(fname)) {
-      if (!is.null(ref.image)) {
-        img.dims <- info.nii(ref.image, "xyz")
-        pixdim <- info.nii(ref.image, "pixdim")
-        orient <- info.nii(ref.image, "orientation")
+      if (!is.null(ref.nii)) {
+        img.dims <- info.nii(ref.nii, "xyz")
+        pixdim <- info.nii(ref.nii, "pixdim")
+        orient <- info.nii(ref.nii, "orientation")
       }
-      init.nii(fname, c(img.dims[1:3], nrow(in.table)), pixdim, orient)
+      init.nii(new.nii = fname,
+               dims = c(img.dims[1:3], nrow(in.table)),
+               pixdim = pixdim,
+               orient = orient)
     }
     for (j in 1:nrow(in.table)) {
       write.nii.voxel(nii.file=fname, coords=c(coords,j), value=in.table[j,i])
