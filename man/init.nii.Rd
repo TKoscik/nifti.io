@@ -2,9 +2,9 @@
 \alias{init.nii}
 \title{Initialize Empty NIFTI File}
 \description{This function is used to initialize an empty NIFTI file. It creates the file volume-by-volume rather than a bulk array write operation such that massive arrays do not need to be loaded into memory}
-\usage{init.nii(nii.file, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA)}
+\usage{init.nii(new.nii, ref.nii=NULL, dims, pixdim=NULL, orient=NULL, datatype=16, init.value=NA)}
 \arguments{
-  \item{nii.file}{Full file path for the file to be written, must have .nii extension}
+  \item{new.nii}{Full file path for the file to be written, must have .nii extension}
   \item{ref.nii}{Full file path for reference image to use same space}
   \item{dims}{a numeric vector specifying the image dimensions, e.g., c(X,Y,Z,T)}
   \item{pixdim}{An 8 element numeric vector specifying the pixel dimensions image to be created. Should be in the format (a,x,y,z,t,b,c,d), the output from info.nii("example_file.nii", "pixdim") is the correct format}
@@ -17,12 +17,6 @@ Timothy R. Koscik <timothy-koscik@uiowa.edu>
 }
 \examples{
 \dontrun{
-reference.image = "~/reference_image.nii"
-pixdim = info.nii(nii.file = reference.image, field="pixdim")
-orientation = info.nii(nii.file = reference.image, field="orientation")
-init.nii(file.name = "~/example_image.nii",
-         dims = c(100,100,100),
-         pixdim = pixdim,
-         orient = orientation)    
+init.nii(new.nii = "~/example_image.nii", ref.nii = "~/reference_image.nii")    
 }
 }
